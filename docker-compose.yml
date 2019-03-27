@@ -1,0 +1,40 @@
+version: '3'
+services:
+  db:
+    env_file: .env
+    image: postgres:11.2-alpine
+  gems:
+    build:
+      context: .
+      dockerfile: Dockerfile.gems
+    volumes:
+      - gems:/gems
+  node_modules:
+    build:
+      context: .
+      dockerfile: Dockerfile.node_modules
+    volumes:
+      - node_modules:/node_modules
+  app:
+    build:
+      context: .
+      # Custom UID and GID in case your's don't match the default of 1000:1000
+      # args:
+        # UID: 1002
+        # GID: 1002
+    env_file: .env
+    tty: true
+    stdin_open: true
+    depends_on:
+      - db
+      - gems
+    volumes:
+      - .:/app
+      - gems:/gems
+      - node_modules:/node_modules
+    ports:
+      - "3000:3000"
+
+volumes:
+  gems:
+  node_modules:

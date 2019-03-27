@@ -1,0 +1,7 @@
+FROM busybox
+ARG UID=1000
+ARG GID=1000
+ENV USER_ID=$UID
+ENV GROUP_ID=$GID
+RUN addgroup -g ${GROUP_ID} -S app && adduser -u ${USER_ID} -S app -G app
+RUN mkdir /gems && chown -R app:app /gems

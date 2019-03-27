@@ -1,0 +1,10 @@
+# frozen_string_literal: true
+
+{
+  id: @law_proposal.id,
+  name: @law_proposal.name,
+  description: @law_proposal.description,
+  url: @law_proposal.url,
+  created_at: @law_proposal.created_at,
+  updated_at: @law_proposal.updated_at
+}

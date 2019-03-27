@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'pathname'
+require 'fileutils'
+include FileUtils
+
+# path to your application root.
+APP_ROOT = Pathname.new File.expand_path('../../', __FILE__)
+
+def system!(*args)
+  system(*args) || abort("\n== Command #{args} failed ==")
+end
+
+chdir APP_ROOT do
+  system! 'docker-compose build'
+  system! 'docker-compose run --rm app bin/bundle install --jobs="$(nproc)"'
+  system! 'docker-compose run --rm app bin/yarn install'
+  system! 'docker-compose run --rm app bin/rails db:setup'
+  system! 'docker-compose up'
+end
