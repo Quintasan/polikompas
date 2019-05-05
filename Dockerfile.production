@@ -1,5 +1,4 @@
 FROM ruby:2.6.2-alpine
-
 RUN apk add --update --no-cache \
       build-base \
       nodejs \
@@ -7,30 +6,14 @@ RUN apk add --update --no-cache \
       libxml2-dev \
       libxslt-dev \
       postgresql-dev \
-      yarn \
-      chromium \
-      chromium-chromedriver \
-      git && \
-      bundle config build.nokogiri --use-system-libraries && \
-      bundle install --jobs=$(nproc)
-
-ARG UID=1000
-ARG GID=1000
-ENV USER_ID=$UID
-ENV GROUP_ID=$GID
-RUN addgroup -g ${GROUP_ID} -S app && adduser -u ${USER_ID} -S app -G app
-
-RUN mkdir /app && chown -R app:app /app
-
+      yarn
+RUN bundle config build.nokogiri --use-system-libraries
+RUN adduser -D app
 USER app
-
-WORKDIR /app
-ADD Gemfile Gemfile.lock /app/
-RUN bundle install
-ADD . .
-ADD entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
-EXPOSE 3000
-
-CMD ["bin/rails", "s", "-b", "0.0.0.0"]
+RUN mkdir /home/app/polikompas
+WORKDIR /home/app/polikompas
+COPY --chown=app:app Gemfile /home/app/polikompas
+COPY --chown=app:app Gemfile.lock /home/app/polikompas
+RUN bundle install --jobs=$(nproc) --without=development test
+COPY --chown=app:app . /home/app/polikompas
+CMD bin/rails s -b 0.0.0.0 -p $PORT

@@ -21,6 +21,7 @@ gem "pundit"
 gem "decent_exposure"
 gem "validate_url"
 gem "bcrypt"
+gem "sentry-raven"
 
 group :development, :test do
   gem "pry"
