@@ -28,5 +28,6 @@ module Polikompas
       g.view_specs false
       g.helper_specs false
     end
+    config.active_record.schema_format = :sql
   end
 end

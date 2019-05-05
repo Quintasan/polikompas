@@ -10,7 +10,8 @@ RUN apk add --update --no-cache \
       yarn \
       chromium \
       chromium-chromedriver \
-      git
+      git \
+      postgresql-client
 RUN bundle config build.nokogiri --use-system-libraries
 
 ARG UID=1000
