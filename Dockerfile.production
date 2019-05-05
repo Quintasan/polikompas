@@ -1,4 +1,6 @@
 FROM ruby:2.6.2-alpine
+ENV RAILS_ENV production
+ENV NODE_ENV production
 RUN apk add --update --no-cache \
       build-base \
       nodejs \
@@ -15,5 +17,7 @@ WORKDIR /home/app/polikompas
 COPY --chown=app:app Gemfile /home/app/polikompas
 COPY --chown=app:app Gemfile.lock /home/app/polikompas
 RUN bundle install --jobs=$(nproc) --without=development test
+RUN yarn install
 COPY --chown=app:app . /home/app/polikompas
+RUN bin/rails webpacker:compile
 CMD bin/rails s -b 0.0.0.0 -p $PORT

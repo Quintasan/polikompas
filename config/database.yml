@@ -14,14 +14,14 @@ docker-compose: &docker-compose
 development:
   <<: *default
   <<: *docker-compose
-  database: <%= ENV.fetch("POSTGRES_DB") { "finansowanie_development" } %>
+  database: <%= ENV.fetch("POSTGRES_DB") { "polikompas_development" } %>
 
 test:
   <<: *default
   <<: *docker-compose
-  database: <%= ENV.fetch("POSTGRES_DB") { "finansowanie_test" } %>
+  database: <%= ENV.fetch("POSTGRES_DB") { "polikompas_test" } %>
 
 production:
   <<: *default
-  url: <%= ENV.fetch("DATABASE_URL") %>
+  url: <%= ENV.fetch("DATABASE_URL") { "postgresql://localhost:5432/polikompas_production" } %>
   secret_key_base: <%= ENV.fetch("SECRET_KEY_BASE") %>
