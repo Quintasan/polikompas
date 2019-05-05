@@ -1,0 +1,36 @@
+FROM ruby:2.6.2-alpine
+
+RUN apk add --update --no-cache \
+      build-base \
+      nodejs \
+      tzdata \
+      libxml2-dev \
+      libxslt-dev \
+      postgresql-dev \
+      yarn \
+      chromium \
+      chromium-chromedriver \
+      git && \
+      bundle config build.nokogiri --use-system-libraries && \
+      bundle install --jobs=$(nproc)
+
+ARG UID=1000
+ARG GID=1000
+ENV USER_ID=$UID
+ENV GROUP_ID=$GID
+RUN addgroup -g ${GROUP_ID} -S app && adduser -u ${USER_ID} -S app -G app
+
+RUN mkdir /app && chown -R app:app /app
+
+USER app
+
+WORKDIR /app
+COPY Gemfile /app/Gemfile
+COPY Gemfile.lock /app/Gemfile.lock
+RUN bundle install
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
+EXPOSE 3000
+
+CMD ["bin/rails", "s", "-b", "0.0.0.0"]
