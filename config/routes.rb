@@ -1,5 +1,18 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root to: "law_proposals#index"
+  post "/upvote", to: "votes#upvote"
+  post "/downvote", to: "votes#downvote"
+  resources :law_proposals
+
+  get "/signup", to: "registrations#new", as: :signup_form
+  post "/signup", to: "registrations#create", as: :signup
+  get "/login", to: "sessions#new", as: :login_form
+  post "/login", to: "sessions#create", as: :login
+  delete "/logout", to: "sessions#destroy", as: :logout
+
+  namespace :admin do
+    resources :law_proposals
+  end
 end

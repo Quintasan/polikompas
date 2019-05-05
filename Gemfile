@@ -9,8 +9,6 @@ ruby "2.6.2"
 gem "rails", "~> 5.2.2", ">= 5.2.2.1"
 gem "pg"
 gem "puma", "~> 3.11"
-gem "sass-rails", "~> 5.0"
-gem "uglifier", ">= 1.3.0"
 gem "webpacker"
 gem "turbolinks", "~> 5"
 gem "hamlit"
@@ -21,6 +19,8 @@ gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "aasm"
 gem "pundit"
 gem "decent_exposure"
+gem "validate_url"
+gem "bcrypt"
 
 group :development, :test do
   gem "pry"
@@ -53,4 +53,9 @@ group :development do
   gem "rails_best_practices"
   gem "rails-erd"
   gem "active_record_query_trace"
+  gem "i18n-tasks", "~> 0.9.29"
+end
+
+group :test do
+  gem "simplecov"
 end

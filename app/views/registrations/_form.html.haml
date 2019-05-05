@@ -1,0 +1,13 @@
+.row
+  .col
+    = form_for user, url: signup_url do |f|
+      .form-group
+        = f.label :email
+        = f.text_field :email, class: "form-control"
+      .form-group
+        = f.label :password
+        = f.password_field :password, class: "form-control"
+      .form-group
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation, class: "form-control"
+      = f.submit

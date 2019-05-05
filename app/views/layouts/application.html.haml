@@ -2,11 +2,22 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1, shrink-to-fit=no"}
     %title Polikompas
+    %link{href: "https://fonts.googleapis.com/css?family=Roboto:300,400,500", rel: "stylesheet"}
     = csrf_meta_tags
     = csp_meta_tag
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'stylesheets', media: 'all', 'data-turbolinks-track': 'reload'
-  %body
-    .container-fluid
-      = yield
+  %body.mdc-typography
+    %header.mdc-top-app-bar.mdc-top-app-bar--fixed
+      .mdc-top-app-bar__row
+        %section.mdc-top-app-bar__section.mdc-top-app-bar__section--align-start
+          = link_to t("polikompas"), root_url, class: "mdc-top-app-bar__title"
+          = link_to t(".manage_law_proposals"), admin_law_proposals_url, class: "mdc-top-app-bar__title"
+        %section.mdc-top-app-bar__section.mdc-top-app-bar__section--align-end
+    .container
+      - flash.each do |key, value|
+        %div{class: flash_class(key)}= value
+      .pt-5
+        = yield

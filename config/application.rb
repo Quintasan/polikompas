@@ -21,6 +21,7 @@ Bundler.require(*Rails.groups)
 
 module Polikompas
   class Application < Rails::Application
+    I18n.default_locale = :pl
     config.load_defaults 5.2
     config.generators do |g|
       g.test_framework :rspec, fixture: true

@@ -1,1 +1,49 @@
+@import "~@material/feature-targeting/functions";
+@import "~@material/line-ripple/mdc-line-ripple";
+@import "~@material/floating-label/mdc-floating-label";
+@import "~@material/typography/mdc-typography";
+@import "~@material/card/mdc-card";
+@import "~@material/button/mdc-button";
+@import "~@material/elevation/mdc-elevation";
+@import "~@material/textfield/mdc-text-field";
+@import "~@material/layout-grid/mdc-layout-grid";
+@import "@material/top-app-bar/mdc-top-app-bar";
+@import "~@material/list/mdc-list";
+$material-icons-font-path: '~material-icons/iconfont/';
+@import '~material-icons/iconfont/material-icons.scss';
 @import '~bootstrap/scss/bootstrap';
+
+body {
+  background-color: #004400;
+}
+
+.container {
+  padding-top: 5rem;
+}
+
+.mdc-top-app-bar__section > a {
+  color: white;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-content {
+  padding: 1rem;
+}
+
+.voting-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+table {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }

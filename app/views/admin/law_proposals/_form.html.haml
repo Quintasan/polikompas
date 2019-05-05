@@ -1,0 +1,17 @@
+= form_for [:admin, law_proposal] do |f|
+  .inputs
+    .mdc-text-field.mt-3
+      = f.text_field :name, class: "mdc-text-field__input"
+      .mdc-line-ripple
+      = f.label :name, class: "mdc-floating-label"
+    .mdc-text-field.mt-3
+      = f.text_field :description, class: "mdc-text-field__input"
+      .mdc-line-ripple
+      = f.label :description, class: "mdc-floating-label"
+    .mdc-text-field.mt-3
+      = f.text_field :url, class: "mdc-text-field__input"
+      .mdc-line-ripple
+      = f.label :url, class: "mdc-floating-label"
+  .buttons.mt-3
+    = f.submit t(".save"), class: "mdc-button mdc-button--raised mt-3"
+    = cancel_link("mdc-button mt-3")

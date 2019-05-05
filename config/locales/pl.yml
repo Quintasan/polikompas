@@ -1,0 +1,50 @@
+---
+pl:
+  activerecord:
+    attributes:
+      law_proposal:
+        description: Opis
+        id: ID
+        name: Nazwa projektu
+        url: URL
+      user:
+        email: Email
+        password: Hasło
+        password_confirmation: Potwierdzenie hasła
+    models:
+      law_proposal: Projekt ustawy
+      user: Użytkownik
+  admin:
+    law_proposals:
+      edit:
+        header: Edycja projektu ustawy
+      form:
+        save: Zapisz projekt ustawy
+      index:
+        actions: Działania
+        create: Dodaj nowy projekt ustawy
+        delete: Usuń
+        edit: Edytuj
+        header: Wszystkie projekty ustaw
+        show: Szczegóły
+      new:
+        header: Dodawanie projektu ustawy
+  application_helper:
+    cancel_link:
+      cancel: Cancel
+      confirm_canceling: Confirm canceling
+  cancel_button: Anuluj
+  confirm_canceling: Wrócić do poprzedniego ekranu? Niezapisanie spowoduje utratę zmian.
+  law_proposals:
+    index:
+      header: Header
+  layouts:
+    application:
+      manage_law_proposals: Zarządzanie projektami ustaw
+  polikompas: Polikompas
+  registrations:
+    new:
+      header: Zarejestruj się
+  sessions:
+    create:
+      invalid_email_or_password: Niepoprawny email lub hasło

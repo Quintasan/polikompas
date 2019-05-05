@@ -1,0 +1,28 @@
+.mdc-card.mdc-elevation--z12
+  .card-content
+    .row
+      .col
+        %h1.mdc-typography--headline1=t(".header")
+    .row.pt-4
+      .col
+        = link_to t(".create"), new_admin_law_proposal_url, class: "mdc-button mdc-button--raised"
+    .row.pt-5
+      .col
+        %table#law_proposals.table.table-hover
+          %thead.thead-light
+            %tr
+              %td=LawProposal.human_attribute_name(:id)
+              %td=LawProposal.human_attribute_name(:name)
+              %td=LawProposal.human_attribute_name(:description)
+              %td=LawProposal.human_attribute_name(:url)
+              %td(colspan=3)=t(".actions")
+          %tbody
+            - law_proposals.each do |law_proposal|
+              %tr
+                %td= law_proposal.id
+                %td= law_proposal.name
+                %td= law_proposal.description
+                %td= law_proposal.url
+                %td= link_to t(".show"), admin_law_proposal_url(law_proposal)
+                %td= link_to t(".edit"), edit_admin_law_proposal_url(law_proposal)
+                %td= link_to t(".delete"), admin_law_proposal_url(law_proposal)
