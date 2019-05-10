@@ -1,8 +1,9 @@
-FROM ruby:2.6.2-alpine
+FROM ruby:2.6.3-alpine
 ENV RAILS_ENV production
 ENV NODE_ENV production
 ARG RAILS_MASTER_KEY
 RUN apk add --update --no-cache \
+      bash \
       build-base \
       nodejs \
       tzdata \
@@ -18,7 +19,7 @@ WORKDIR /home/app/polikompas
 COPY --chown=app:app Gemfile /home/app/polikompas
 COPY --chown=app:app Gemfile.lock /home/app/polikompas
 RUN bundle install --jobs=$(nproc) --without=development test
-RUN yarn install
 COPY --chown=app:app . /home/app/polikompas
+RUN yarn install
 RUN bin/rails webpacker:compile
-CMD bin/rails s -b 0.0.0.0 -p $PORT
+CMD rm -f tmp/pids/server.pid && bin/rails s -b 0.0.0.0 -p $PORT
