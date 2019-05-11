@@ -29,6 +29,9 @@ pl:
         show: Szczegóły
       new:
         header: Dodawanie projektu ustawy
+      show:
+        header: Szczegóły projektu ustawy
+        source: Źródło
   application_helper:
     cancel_link:
       cancel: Cancel

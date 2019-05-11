@@ -29,6 +29,9 @@ en:
         show: Show
       new:
         header: New law proposal
+      show:
+        header: Header
+        source: Source
   application_helper:
     cancel_link:
       cancel: Cancel

@@ -1,0 +1,10 @@
+.mdc-card.mdc-elevation--z12
+  .card-content
+    .row
+      .col
+        %h1 #{LawProposal.human_attribute_name(:name)}
+        %p #{law_proposal.name}
+        %h1 #{LawProposal.human_attribute_name(:description)}
+        %p #{law_proposal.description}
+        %h1 #{t(".source")}
+        %p #{link_to law_proposal.url, law_proposal.url}
