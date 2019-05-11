@@ -118,7 +118,8 @@ CREATE TABLE public.votes (
     votable_id bigint,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    type public.vote_type
+    type public.vote_type,
+    user_id bigint
 );
 
 
@@ -217,10 +218,25 @@ CREATE INDEX index_votes_on_type ON public.votes USING btree (type);
 
 
 --
+-- Name: index_votes_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_votes_on_user_id ON public.votes USING btree (user_id);
+
+
+--
 -- Name: index_votes_on_votable_type_and_votable_id; Type: INDEX; Schema: public; Owner: -
 --
 
 CREATE INDEX index_votes_on_votable_type_and_votable_id ON public.votes USING btree (votable_type, votable_id);
+
+
+--
+-- Name: votes fk_rails_c9b3bef597; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.votes
+    ADD CONSTRAINT fk_rails_c9b3bef597 FOREIGN KEY (user_id) REFERENCES public.users(id);
 
 
 --
@@ -232,6 +248,7 @@ SET search_path TO "$user", public;
 INSERT INTO "schema_migrations" (version) VALUES
 ('20190402111002'),
 ('20190404113933'),
-('20190420152616');
+('20190420152616'),
+('20190511111755');
 
 

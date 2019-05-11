@@ -3,15 +3,11 @@
 class VotesController < ApplicationController
   protect_from_forgery with: :null_session
 
-  def upvote
+  def vote
     votable = params[:type].to_s.constantize.find(params[:id])
-    votable.upvote!
-    render json: { id: votable.id, score: votable.score }
-  end
-
-  def downvote
-    votable = params[:type].to_s.constantize.find(params[:id])
-    votable.downvote!
+    action = params[:user_action]
+    user = User.first
+    ProcessVote.new(votable: votable, action: action, user: user).call
     render json: { id: votable.id, score: votable.score }
   end
 end

@@ -20,10 +20,11 @@ export default class extends Controller {
     return parseInt(this.data.get("id"))
   }
 
-  get payload() {
+  payload(action) {
     return {
+      id: this.id,
       type: this.type,
-      id: this.id
+      user_action: action
     }
   }
 
@@ -32,10 +33,9 @@ export default class extends Controller {
   }
 
   upvote() {
-    console.log(`Upvoted, id: ${this.id}`);
-    fetch("/upvote", {
+    fetch("/vote", {
       method: "POST",
-      body: JSON.stringify(this.payload),
+      body: JSON.stringify(this.payload("upvote")),
       headers: {
         'Content-Type': 'application/json'
       }
@@ -45,10 +45,9 @@ export default class extends Controller {
   }
 
   downvote() {
-    console.log(`Downvoted, id: ${this.id}`);
-    fetch("/downvote", {
+    fetch("/vote", {
       method: "POST",
-      body: JSON.stringify(this.payload),
+      body: JSON.stringify(this.payload("downvote")),
       headers: {
         'Content-Type': 'application/json'
       }

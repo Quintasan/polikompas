@@ -5,7 +5,7 @@
         %h1.mdc-typography--headline1=t(".header")
         %ul.mdc-list.mdc-list--two-line.mcd-list--avatar-list
           - law_proposals.each do |lp|
-            %li.mdc-list-item{data: { controller: "votable", target: "votable.item", "votable-type": lp.class.to_s, "votable-id": lp.id, "votable-score": lp.score} }
+            %li.mdc-list-item{data: { controller: "votable", target: "votable.item", "votable-type": lp.class.to_s, "votable-id": lp.id, "votable-score": lp.score } }
               %span.mdc-list-item__graphic= lp.score
               %span.mdc-list-item__text
                 %span.mdc-list-item__primary-text= link_to lp.name, lp.url
