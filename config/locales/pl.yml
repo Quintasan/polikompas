@@ -34,15 +34,17 @@ pl:
         source: Źródło
   application_helper:
     cancel_link:
-      cancel: Cancel
-      confirm_canceling: Confirm canceling
+      cancel: Anuluj
+      confirm_canceling: Czy na pewno chcesz anulować?
   cancel_button: Anuluj
   confirm_canceling: Wrócić do poprzedniego ekranu? Niezapisanie spowoduje utratę zmian.
   law_proposals:
     index:
-      header: Header
+      header: Propozycje ustaw
   layouts:
     application:
+      login: Zaloguj się
+      logout: Wyloguj się
       manage_law_proposals: Zarządzanie projektami ustaw
   polikompas: Polikompas
   registrations:
@@ -51,3 +53,7 @@ pl:
   sessions:
     create:
       invalid_email_or_password: Niepoprawny email lub hasło
+      logged_in_successfully: Pomyślnie zalogowano
+    new:
+      header: Zaloguj się
+      login: Zaloguj

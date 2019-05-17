@@ -43,6 +43,8 @@ en:
       header: Header
   layouts:
     application:
+      login: Login
+      logout: Logout
       manage_law_proposals: Manage law proposals
   polikompas: Polikompas
   registrations:
@@ -51,3 +53,7 @@ en:
   sessions:
     create:
       invalid_email_or_password: Invalid email or password
+      logged_in_successfully: Logged in successfully
+    new:
+      header: Header
+      login: Login

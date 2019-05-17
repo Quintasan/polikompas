@@ -1,2 +1,20 @@
-%h1 Sessions#new
-%p Find me in app/views/sessions/new.html.haml
+.row.justify-content-center
+  .col-6
+    .mdc-card.mdc-elevation--z12
+      .card-content
+        .row.justify-content-center
+          %h1.mdc-typography--headline1=t(".header")
+        .row.justify-content-center
+          .col
+            = form_for login_url, method: :post do
+              .inputs
+                .mdc-text-field.mt-3
+                  = text_field_tag(:email, nil,  class: "mdc-text-field__input")
+                  .mdc-line-ripple
+                  = label_tag :email, nil, class: "mdc-floating-label"
+                .mdc-text-field.mt-3
+                  = password_field_tag(:password, nil, class: "mdc-text-field__input")
+                  .mdc-line-ripple
+                  = label_tag :password, nil, class: "mdc-floating-label"
+              .buttons.mt-3
+                = submit_tag t(".login"), class: "mdc-button mdc-button--raised mt-3"

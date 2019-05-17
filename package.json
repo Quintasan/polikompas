@@ -14,6 +14,7 @@
     "@material/textfield": "^1.1.1",
     "@material/top-app-bar": "^2.0.0",
     "@material/typography": "^1.0.0",
+    "@rails/ujs": "^6.0.0-alpha",
     "@rails/webpacker": "^4.0.2",
     "bootstrap": "^4.3.1",
     "jquery": "^3.3.1",

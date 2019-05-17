@@ -1,4 +1,5 @@
 import { Controller } from "stimulus"
+import Rails from "@rails/ujs"
 
 export default class extends Controller {
   static targets = [ "item" ]
@@ -37,7 +38,8 @@ export default class extends Controller {
       method: "POST",
       body: JSON.stringify(this.payload("upvote")),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': Rails.csrfToken()
       }
     }).then(response => response.json())
       .then(response => this.score = response["score"])
@@ -49,7 +51,8 @@ export default class extends Controller {
       method: "POST",
       body: JSON.stringify(this.payload("downvote")),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': Rails.csrfToken()
       }
     }).then(response => response.json())
       .then(response => this.score = response["score"])

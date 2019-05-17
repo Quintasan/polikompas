@@ -16,8 +16,12 @@
           = link_to t("polikompas"), root_url, class: "mdc-top-app-bar__title"
           = link_to t(".manage_law_proposals"), admin_law_proposals_url, class: "mdc-top-app-bar__title"
         %section.mdc-top-app-bar__section.mdc-top-app-bar__section--align-end
+          - if current_user
+            = link_to t(".logout"), logout_url, method: :delete, class: "mdc-top-app-bar__title"
+          - else
+            = link_to t(".login"), login_url, class: "mdc-top-app-bar__title"
     .container
-      - flash.each do |key, value|
-        %div{class: flash_class(key)}= value
       .pt-5
+        - flash.each do |key, value|
+          %div{class: flash_class(key)}= value
         = yield
