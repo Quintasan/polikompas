@@ -35,6 +35,7 @@ group :development, :test do
   gem "shoulda-matchers"
   gem "bullet"
   gem "database_cleaner"
+  gem "activerecord-clean-db-structure"
 end
 
 group :development do

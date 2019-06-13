@@ -36,6 +36,8 @@ GEM
       activemodel (= 5.2.3)
       activesupport (= 5.2.3)
       arel (>= 9.0)
+    activerecord-clean-db-structure (0.3.0)
+      activerecord (>= 4.2)
     activestorage (5.2.3)
       actionpack (= 5.2.3)
       activerecord (= 5.2.3)
@@ -313,6 +315,7 @@ PLATFORMS
 DEPENDENCIES
   aasm
   active_record_query_trace
+  activerecord-clean-db-structure
   awesome_print
   bcrypt
   better_errors
