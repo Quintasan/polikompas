@@ -1,0 +1,8 @@
+log
+node_modules
+tmp
+.terraform_env
+.terraform
+*.tf
+*.tfstate
+config/master.key

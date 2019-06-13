@@ -6,18 +6,19 @@ services:
   gems:
     build:
       context: .
-      dockerfile: Dockerfile.gems
+      dockerfile: ./docker/development/Dockerfile.gems
     volumes:
       - gems:/gems
   node_modules:
     build:
       context: .
-      dockerfile: Dockerfile.node_modules
+      dockerfile: ./docker/development/Dockerfile.node_modules
     volumes:
       - node_modules:/node_modules
   app:
     build:
       context: .
+      dockerfile: ./docker/development/Dockerfile
       # Custom UID and GID in case your's don't match the default of 1000:1000
       # args:
         # UID: 1002
