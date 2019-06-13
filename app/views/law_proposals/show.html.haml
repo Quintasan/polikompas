@@ -1,0 +1,18 @@
+.mdc-card.mdc-elevation--z12
+  .card-content
+    .row
+      .col
+        %h1.mdc-typography--headline1= law_proposal.name
+        %p
+          #{t(".source")}: #{link_to law_proposal.url}
+        .mdc-list-divider{role: "separator"}
+        %ul.mdc-list.mdc-list--two-line.mcd-list--avatar-list
+          - law_proposal.comments.each do |comment|
+            %li.mdc-list-item{data: { controller: "votable", target: "votable.item", "votable-type": comment.class.to_s, "votable-id": comment.id, "votable-score": comment.score } }
+              %span.mdc-list-item__graphic= comment.score
+              %span.mdc-list-item__text
+                %span.mdc-list-item__primary-text= comment.body
+              %span.mdc-list-item__meta.voting-buttons
+                %span.material-icons.md-48{data: { action: "click->votable#upvote"} } arrow_drop_up
+                %span.material-icons.md-48{data: { action: "click->votable#downvote"} } arrow_drop_down
+            %li.mdc-list-divider{role: "separator"}

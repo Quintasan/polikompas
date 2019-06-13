@@ -5,6 +5,7 @@ SET client_encoding = 'UTF8';
 SET standard_conforming_strings = on;
 SELECT pg_catalog.set_config('search_path', '', false);
 SET check_function_bodies = false;
+SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
@@ -32,6 +33,40 @@ CREATE TABLE public.ar_internal_metadata (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
 );
+
+
+--
+-- Name: comments; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.comments (
+    id bigint NOT NULL,
+    body text NOT NULL,
+    commentable_type character varying,
+    commentable_id bigint,
+    user_id bigint,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.comments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.comments_id_seq OWNED BY public.comments.id;
 
 
 --
@@ -143,6 +178,13 @@ ALTER SEQUENCE public.votes_id_seq OWNED BY public.votes.id;
 
 
 --
+-- Name: comments id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.comments ALTER COLUMN id SET DEFAULT nextval('public.comments_id_seq'::regclass);
+
+
+--
 -- Name: law_proposals id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -169,6 +211,14 @@ ALTER TABLE ONLY public.votes ALTER COLUMN id SET DEFAULT nextval('public.votes_
 
 ALTER TABLE ONLY public.ar_internal_metadata
     ADD CONSTRAINT ar_internal_metadata_pkey PRIMARY KEY (key);
+
+
+--
+-- Name: comments comments_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.comments
+    ADD CONSTRAINT comments_pkey PRIMARY KEY (id);
 
 
 --
@@ -201,6 +251,20 @@ ALTER TABLE ONLY public.users
 
 ALTER TABLE ONLY public.votes
     ADD CONSTRAINT votes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: index_comments_on_commentable_type_and_commentable_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_comments_on_commentable_type_and_commentable_id ON public.comments USING btree (commentable_type, commentable_id);
+
+
+--
+-- Name: index_comments_on_user_id; Type: INDEX; Schema: public; Owner: -
+--
+
+CREATE INDEX index_comments_on_user_id ON public.comments USING btree (user_id);
 
 
 --
@@ -249,6 +313,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190402111002'),
 ('20190404113933'),
 ('20190420152616'),
-('20190511111755');
+('20190511111755'),
+('20190530080904');
 
 

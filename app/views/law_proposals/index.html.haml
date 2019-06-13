@@ -8,7 +8,7 @@
             %li.mdc-list-item{data: { controller: "votable", target: "votable.item", "votable-type": lp.class.to_s, "votable-id": lp.id, "votable-score": lp.score } }
               %span.mdc-list-item__graphic= lp.score
               %span.mdc-list-item__text
-                %span.mdc-list-item__primary-text= link_to lp.name, lp.url
+                %span.mdc-list-item__primary-text= link_to lp.name, lp
                 %span.mdc-list-item__secondary-text= lp.description
               %span.mdc-list-item__meta.voting-buttons
                 %span.material-icons.md-48{data: { action: "click->votable#upvote"} } arrow_drop_up
