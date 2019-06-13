@@ -42,3 +42,4 @@ coverage/
 
 # This has master key to build the image, dont check it in
 Makefile
+.terraform_env
