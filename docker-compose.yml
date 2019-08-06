@@ -1,21 +1,24 @@
 version: '3'
+
 services:
-  db:
-    env_file: .env
-    image: postgres:11.2-alpine
   gems:
     build:
       context: .
       dockerfile: ./docker/development/Dockerfile.gems
     volumes:
       - gems:/gems
+
   node_modules:
     build:
       context: .
       dockerfile: ./docker/development/Dockerfile.node_modules
     volumes:
       - node_modules:/node_modules
-  app:
+  db:
+    env_file: .env
+    image: postgres:11.2-alpine
+
+  app: &app
     build:
       context: .
       dockerfile: ./docker/development/Dockerfile
@@ -23,19 +26,46 @@ services:
       # args:
         # UID: 1002
         # GID: 1002
+    image: polikompas:1.0.0
+    tmpfs:
+      - /tmp
+
+  backend: &backend
+    <<: *app
     env_file: .env
     tty: true
     stdin_open: true
-    depends_on:
-      - db
-      - gems
     volumes:
       - .:/app
       - gems:/gems
       - node_modules:/node_modules
+      - packs:/app/public/packs
+    depends_on:
+      - db
+      - gems
+      - node_modules
+
+  webpacker:
+    <<: *app
+    command: ./bin/webpack-dev-server
+    ports:
+      - "3035:3035"
+    volumes:
+      - .:/app
+      - gems:/gems
+      - node_modules:/node_modules
+      - packs:/app/public/packs
+    environment:
+      - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
+
+  rails:
+    <<: *backend
     ports:
       - "3000:3000"
+    environment:
+      - WEBPACKER_DEV_SERVER_HOST=webpacker
 
 volumes:
   gems:
   node_modules:
+  packs:
