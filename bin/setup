@@ -14,8 +14,8 @@ end
 
 chdir APP_ROOT do
   system! 'docker-compose build'
-  system! 'docker-compose run --rm app bin/bundle install --jobs="$(nproc)"'
-  system! 'docker-compose run --rm app bin/yarn install'
-  system! 'docker-compose run --rm app bin/rails db:drop db:create db:migrate'
-  system! 'docker-compose up'
+  system! 'docker-compose run --rm rails bin/bundle install --jobs="$(nproc)"'
+  system! 'docker-compose run --rm rails bin/yarn install'
+  system! 'docker-compose run --rm rails bin/rails db:drop db:create db:migrate'
+  system! 'docker-compose up rails webpacker'
 end

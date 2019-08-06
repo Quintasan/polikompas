@@ -20,7 +20,7 @@ ENV USER_ID=$UID
 ENV GROUP_ID=$GID
 RUN addgroup -g ${GROUP_ID} -S app && adduser -u ${USER_ID} -S app -G app
 
-RUN mkdir /app && chown -R app:app /app
+RUN mkdir -p /app/public/packs && chown -R app:app /app
 
 USER app
 
@@ -29,5 +29,7 @@ WORKDIR /app
 EXPOSE 3000
 
 ENV BUNDLE_PATH /gems
+
+VOLUME ["/app/public/packs"]
 
 CMD ["bin/rails", "s", "-b", "0.0.0.0"]
