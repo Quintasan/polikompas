@@ -5,7 +5,21 @@
         %h1.mdc-typography--headline1= law_proposal.name
         %p
           #{t(".source")}: #{link_to law_proposal.url}
+
         .mdc-list-divider{role: "separator"}
+
+        .add_comment{data: { controller: "comment", "comment-id": law_proposal.id, "comment-type": law_proposal.class.to_s }}
+          .mdc-text-field.mdc-text-field--fullwidth.mdc-text-field--no-label.mdc-text-field--textarea.mt-4
+            %textarea.mdc-text-field__input(id="add_comment_textarea"){data: { target: "comment.body"}}
+            .mdc-notched-outline
+              .mdc-notched-outline__leading
+              .mdc-notched-outline__notch
+                %label.mdc-floating-label(for="add_comment_textarea") Comment
+              .mdc-notched-outline__trailing
+          %button.mdc-button.mdc-button--raised.mt-1.mb-4{data: { action: "click->comment#save" } } Submit
+
+        .mdc-list-divider{role: "separator"}
+
         %ul.mdc-list.mdc-list--two-line.mcd-list--avatar-list
           - law_proposal.comments.each do |comment|
             %li.mdc-list-item{data: { controller: "votable", target: "votable.item", "votable-type": comment.class.to_s, "votable-id": comment.id, "votable-score": comment.score } }

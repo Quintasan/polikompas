@@ -3,6 +3,7 @@
 Rails.application.routes.draw do
   root to: "law_proposals#index"
   post "/vote", to: "votes#vote"
+  post "/comments", to: "comments#create"
   resources :law_proposals
 
   get "/signup", to: "registrations#new", as: :signup_form
