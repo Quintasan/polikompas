@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ProcessVote
   attr_accessor :votable, :action, :user
 

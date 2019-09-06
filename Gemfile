@@ -51,6 +51,7 @@ group :development do
   gem "bundler-audit"
   gem "fasterer"
   gem "rubocop", require: false
+  gem "rubocop-performance"
   gem "brakeman", require: false
   gem "rails_best_practices"
   gem "rails-erd"

@@ -6,5 +6,9 @@
         %p #{law_proposal.name}
         %h1 #{LawProposal.human_attribute_name(:description)}
         %p #{law_proposal.description}
+        %h1 #{LawProposal.human_attribute_name(:important_points)}
+        %p #{law_proposal.important_points}
+        %h1 #{LawProposal.human_attribute_name(:tags)}
+        %p #{show_tags(law_proposal: law_proposal)}
         %h1 #{t(".source")}
         %p #{link_to law_proposal.url, law_proposal.url}
