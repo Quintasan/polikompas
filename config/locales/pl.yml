@@ -11,6 +11,7 @@ pl:
         name: Nazwa projektu
         url: URL
         tags: Tagi
+        important_points: "Kwestie godne uwagi"
       user:
         email: Email
         password: Hasło

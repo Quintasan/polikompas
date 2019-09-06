@@ -37,7 +37,7 @@ module Admin
     private
 
     def law_proposal_params
-      params.require(:law_proposal).permit(:name, :description, :url, :tags)
+      params.require(:law_proposal).permit(:name, :description, :url, :tags, :important_points)
     end
   end
 end

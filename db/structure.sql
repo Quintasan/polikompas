@@ -49,7 +49,8 @@ CREATE TABLE public.law_proposals (
     url character varying,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    tags character varying[] DEFAULT '{}'::character varying[]
+    tags character varying[] DEFAULT '{}'::character varying[],
+    important_points character varying DEFAULT ''::character varying NOT NULL
 );
 
 -- Name: schema_migrations; Type: TABLE
@@ -129,5 +130,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190420152616'),
 ('20190511111755'),
 ('20190530080904'),
-('20190906150411');
+('20190906150411'),
+('20190906162215');
 
