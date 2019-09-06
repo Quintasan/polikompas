@@ -1,5 +1,8 @@
 ---
 pl:
+  helpers:
+    law_proposals:
+      no_tags: "Brak tagów"
   activerecord:
     attributes:
       law_proposal:
@@ -7,6 +10,7 @@ pl:
         id: ID
         name: Nazwa projektu
         url: URL
+        tags: Tagi
       user:
         email: Email
         password: Hasło
