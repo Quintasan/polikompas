@@ -48,7 +48,8 @@ CREATE TABLE public.law_proposals (
     description character varying,
     url character varying,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    tags character varying[] DEFAULT '{}'::character varying[]
 );
 
 -- Name: schema_migrations; Type: TABLE
@@ -93,6 +94,10 @@ CREATE INDEX index_comments_on_commentable_type_and_commentable_id ON public.com
 
 CREATE INDEX index_comments_on_user_id ON public.comments USING btree (user_id);
 
+-- Name: index_law_proposals_on_tags; Type: INDEX
+
+CREATE INDEX index_law_proposals_on_tags ON public.law_proposals USING gin (tags);
+
 -- Name: index_users_on_email; Type: INDEX
 
 CREATE UNIQUE INDEX index_users_on_email ON public.users USING btree (email);
@@ -123,5 +128,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190404113933'),
 ('20190420152616'),
 ('20190511111755'),
-('20190530080904');
+('20190530080904'),
+('20190906150411');
 
