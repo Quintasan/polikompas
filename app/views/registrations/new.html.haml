@@ -1,5 +1,7 @@
-.row
-  .col
-    %h1= t(".header")
-
-= render partial: "form", layout: "shared/form_card"
+.row.justify-content-center
+  .col-6
+    .mdc-card.mdc-elevation--z12
+      .card-content
+        .row.justify-content-center
+          %h1.mdc-typography--headline1=t(".header")
+        = render partial: "form"
