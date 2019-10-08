@@ -1,13 +1,17 @@
-.row
+.row.justify-content-center
   .col
     = form_for user, url: signup_url do |f|
-      .form-group
-        = f.label :email
-        = f.text_field :email, class: "form-control"
-      .form-group
-        = f.label :password
-        = f.password_field :password, class: "form-control"
-      .form-group
-        = f.label :password_confirmation
-        = f.password_field :password_confirmation, class: "form-control"
-      = f.submit
+      .inputs
+        .mdc-text-field.mt-3
+          = f.text_field :email, class: "mdc-text-field__input"
+          .mdc-line-ripple
+          = f.label :email, class: "mdc-floating-label"
+        .mdc-text-field.mt-3
+          = f.password_field :password, class: "mdc-text-field__input"
+          .mdc-line-ripple
+          = f.label :password, class: "mdc-floating-label"
+        .mdc-text-field.mt-3
+          = f.password_field :password_confirmation, class: "mdc-text-field__input"
+          .mdc-line-ripple
+          = f.label :password_confirmation, class: "mdc-floating-label"
+      = f.submit class: "mdc-button mdc-button--raised mt-3"

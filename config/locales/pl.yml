@@ -54,7 +54,7 @@ pl:
   polikompas: Polikompas
   registrations:
     new:
-      header: Zarejestruj się
+      header: "Rejestracja"
   sessions:
     create:
       invalid_email_or_password: Niepoprawny email lub hasło
