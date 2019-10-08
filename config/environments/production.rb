@@ -65,6 +65,17 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "polikompas_#{Rails.env}"
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.sendgrid.net',
+    port: 587,
+    domain: 'konsultacjeobywatelskie.pl',
+    user_name: Rails.application.credentials.sendgrid_username,
+    password: Rails.application.credentials.sendgrid_password,
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
+
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
