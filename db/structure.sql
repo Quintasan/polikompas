@@ -66,7 +66,9 @@ CREATE TABLE public.users (
     email character varying,
     password_digest character varying,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    confirmation_token character varying,
+    confirmed_at timestamp without time zone
 );
 
 -- Name: votes; Type: TABLE
@@ -131,5 +133,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190511111755'),
 ('20190530080904'),
 ('20190906150411'),
-('20190906162215');
+('20190906162215'),
+('20191010192632');
 

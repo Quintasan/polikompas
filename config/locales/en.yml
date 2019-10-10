@@ -5,7 +5,9 @@ en:
       law_proposal:
         description: Description
         id: ID
+        important_points: Kwestie godne uwagi
         name: Project name
+        tags: Tagi
         url: URL
       user:
         email: Email
@@ -38,17 +40,32 @@ en:
       confirm_canceling: Confirm canceling
   cancel_button: Cancel
   confirm_canceling: Do you really wish to go back? Unsaved changes will be lost!
+  helpers:
+    law_proposals:
+      no_tags: Brak tagów
   law_proposals:
     index:
       header: Header
+    show:
+      source: Source
   layouts:
     application:
       login: Login
       logout: Logout
       manage_law_proposals: Manage law proposals
+      signup: Zarejestruj się
   polikompas: Polikompas
   registrations:
+    confirm:
+      confirmation_failure: Confirmation failure
+      confirmation_success: Confirmation success
     new:
+      header: Header
+  registrations_mailer:
+    send_confirmation_email:
+      body: Body
+      confirm: Confirm
+      confirmation_email: Confirmation email
       header: Header
   sessions:
     create:

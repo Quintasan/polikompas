@@ -1,0 +1,5 @@
+%h1= t(".header")
+
+%p= t(".body")
+
+%p= link_to t(".confirm"), confirm_url(@user.confirmation_token)
