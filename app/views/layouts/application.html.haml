@@ -20,6 +20,7 @@
             = link_to t(".logout"), logout_url, method: :delete, class: "mdc-top-app-bar__title"
           - else
             = link_to t(".login"), login_url, class: "mdc-top-app-bar__title"
+            = link_to t(".signup"), signup_url, class: "mdc-top-app-bar__title"
     .container
       .pt-5
         - flash.each do |key, value|

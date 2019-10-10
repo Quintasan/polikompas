@@ -1,17 +1,14 @@
 ---
 pl:
-  helpers:
-    law_proposals:
-      no_tags: "Brak tagów"
   activerecord:
     attributes:
       law_proposal:
         description: Opis
         id: ID
+        important_points: Kwestie godne uwagi
         name: Nazwa projektu
-        url: URL
         tags: Tagi
-        important_points: "Kwestie godne uwagi"
+        url: URL
       user:
         email: Email
         password: Hasło
@@ -43,18 +40,33 @@ pl:
       confirm_canceling: Czy na pewno chcesz anulować?
   cancel_button: Anuluj
   confirm_canceling: Wrócić do poprzedniego ekranu? Niezapisanie spowoduje utratę zmian.
+  helpers:
+    law_proposals:
+      no_tags: Brak tagów
   law_proposals:
     index:
       header: Propozycje ustaw
+    show:
+      source: Źródło
   layouts:
     application:
       login: Zaloguj się
       logout: Wyloguj się
       manage_law_proposals: Zarządzanie projektami ustaw
+      signup: Zarejestruj się
   polikompas: Polikompas
   registrations:
+    confirm:
+      confirmation_failure: Nie udało się potwierdzić rejestracji, prosimy o kontakt ze wsparciem technicznym
+      confirmation_success: Twoje konto zostało potwierdzone. Teraz możesz się zalogować
     new:
-      header: "Rejestracja"
+      header: Rejestracja
+  registrations_mailer:
+    send_confirmation_email:
+      body: Dziękujemy za rejestrację w serwisie Konsultacje Obywatelskie, aby potwierdzić swoje konto kliknij w poniższy link
+      confirm: Potwierdź rejestrację w serwisie Konsultacje Obywatelskie
+      header: Witaj w serwisie Konsultacje Obywatelskie
+      subject: Potwierdzenie rejestracji w serwisie Konsultacje Obywatelskie
   sessions:
     create:
       invalid_email_or_password: Niepoprawny email lub hasło
