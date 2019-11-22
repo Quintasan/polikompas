@@ -6,12 +6,11 @@ class RegistrationsController < ApplicationController
   def new; end
 
   def create
-    user = User.new(user_params)
     if user.valid?
       user.confirmation_token = Digest::SHA256.hexdigest(Time.now.to_s)
       user.save
       RegistrationsMailer.send_confirmation_email(user).deliver
-      redirect_to root_url
+      redirect_to root_url, flash: { success: t(".confirmation_email_sent") }
     else
       render :new
     end
