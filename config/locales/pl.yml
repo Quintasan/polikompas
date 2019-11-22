@@ -13,6 +13,12 @@ pl:
         email: Email
         password: Hasło
         password_confirmation: Potwierdzenie hasła
+    errors:
+      models:
+        user:
+          attributes:
+            password_confirmation:
+              confirmation: nie pasuje do podanego hasła
     models:
       law_proposal: Projekt ustawy
       user: Użytkownik
@@ -59,6 +65,8 @@ pl:
     confirm:
       confirmation_failure: Nie udało się potwierdzić rejestracji, prosimy o kontakt ze wsparciem technicznym
       confirmation_success: Twoje konto zostało potwierdzone. Teraz możesz się zalogować
+    create:
+      confirmation_email_sent: Na podany adres email wysłaliśmy wiadomość. Kliknij na link w niej zawarty aby potwierdzić swoje konto.
     new:
       header: Rejestracja
   registrations_mailer:

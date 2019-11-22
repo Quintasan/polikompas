@@ -1,6 +1,10 @@
 .row.justify-content-center
   .col
-    = form_for user, url: signup_url do |f|
+    = form_with(model: user, url: signup_url, local: true) do |f|
+      - if user.errors.any?
+        %ul
+          - user.errors.full_messages.each do |message|
+            %li= message
       .inputs
         .mdc-text-field.mt-3
           = f.text_field :email, class: "mdc-text-field__input"

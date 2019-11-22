@@ -53,20 +53,22 @@ en:
       login: Login
       logout: Logout
       manage_law_proposals: Manage law proposals
-      signup: Zarejestruj się
+      signup: Sign up
   polikompas: Polikompas
   registrations:
     confirm:
       confirmation_failure: Confirmation failure
       confirmation_success: Confirmation success
+    create:
+      confirmation_email_sent: We have sent an confirmation email to the address you provided. To confirm your account, please click the link inside.
     new:
       header: Header
   registrations_mailer:
     send_confirmation_email:
       body: Body
       confirm: Confirm
-      confirmation_email: Confirmation email
       header: Header
+      subject: Confirm your account on Konsultacje Obywatelskie
   sessions:
     create:
       invalid_email_or_password: Invalid email or password
