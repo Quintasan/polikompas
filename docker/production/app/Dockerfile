@@ -29,4 +29,4 @@ RUN bundle install --jobs=$(nproc) --without=development test
 RUN yarn install
 COPY --chown=app:app . /home/app/src
 RUN RAILS_ENV=production bin/rails webpacker:compile
-CMD rm -f tmp/pids/server.pid && bin/rails -b 0.0.0.0 -p $PORT
+CMD rm -f tmp/pids/server.pid && bin/rails s -b 0.0.0.0 -p $PORT

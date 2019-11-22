@@ -23,5 +23,5 @@ test:
 
 production:
   <<: *default
-  url: <%= ENV.fetch("DATABASE_URL") { "postgresql://localhost:5432/polikompas_production" } %>
-  secret_key_base: <%= ENV.fetch("SECRET_KEY_BASE") %>
+  <<: *docker-compose
+  database: <%= ENV.fetch("POSTGRES_DB") { "polikompas_production" } %>

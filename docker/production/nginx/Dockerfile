@@ -1,2 +1,2 @@
 FROM nginx:alpine
-COPY --chown=www-data:www-data public /usr/share/nginx/html/
+COPY public /usr/share/nginx/html/

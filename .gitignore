@@ -44,3 +44,5 @@ coverage/
 Makefile
 .terraform_env
 TERRAFORM_CREDENTIALS
+volumes
+deploy.sh

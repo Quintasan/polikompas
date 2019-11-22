@@ -6,3 +6,4 @@ tmp
 *.tf
 *.tfstate
 config/master.key
+volumes
