@@ -20,7 +20,11 @@ ENV USER_ID=$UID
 ENV GROUP_ID=$GID
 RUN addgroup -g ${GROUP_ID} -S app && adduser -u ${USER_ID} -S app -G app
 
+COPY ./docker/development/entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
 RUN mkdir -p /app/public/packs && chown -R app:app /app
+
 
 USER app
 
@@ -32,4 +36,5 @@ ENV BUNDLE_PATH /gems
 
 VOLUME ["/app/public/packs"]
 
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
 CMD ["bin/rails", "s", "-b", "0.0.0.0"]
