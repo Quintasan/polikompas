@@ -13,6 +13,12 @@ en:
         email: Email
         password: Hasło
         password_confirmation: Password confirmation
+    errors:
+      models:
+        user:
+          attributes:
+            password_confirmation:
+              confirmation: nie pasuje do podanego hasła
     models:
       law_proposal: Law proposal
       user: User
@@ -53,7 +59,11 @@ en:
       login: Login
       logout: Logout
       manage_law_proposals: Manage law proposals
+      privacy_policy: Privacy policy
       signup: Sign up
+  pages:
+    prywatnosc:
+      header: Header
   polikompas: Polikompas
   registrations:
     confirm:

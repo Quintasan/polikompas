@@ -15,6 +15,7 @@
         %section.mdc-top-app-bar__section.mdc-top-app-bar__section--align-start
           = link_to t("polikompas"), root_url, class: "mdc-top-app-bar__title"
           = link_to t(".manage_law_proposals"), admin_law_proposals_url, class: "mdc-top-app-bar__title"
+          = link_to t(".privacy_policy"), page_url('privacy'), class: "mdc-top-app-bar__title"
         %section.mdc-top-app-bar__section.mdc-top-app-bar__section--align-end
           - if current_user
             = link_to t(".logout"), logout_url, method: :delete, class: "mdc-top-app-bar__title"

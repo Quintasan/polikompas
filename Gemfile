@@ -22,6 +22,7 @@ gem "decent_exposure"
 gem "validate_url"
 gem "bcrypt"
 gem "sentry-raven"
+gem "high_voltage"
 
 group :development, :test do
   gem "pry"
