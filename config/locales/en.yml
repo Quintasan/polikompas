@@ -62,8 +62,8 @@ en:
       privacy_policy: Privacy policy
       signup: Sign up
   pages:
-    prywatnosc:
-      header: Header
+    privacy:
+      header: Privacy policy
   polikompas: Polikompas
   registrations:
     confirm:
