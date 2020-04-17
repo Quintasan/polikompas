@@ -16,7 +16,8 @@ RUN apk add --update --no-cache \
       postgresql-dev \
       yarn \
       git \
-      postgresql-client
+      postgresql-client \
+      bash
 RUN bundle config build.nokogiri --use-system-libraries
 
 RUN adduser -D app
