@@ -76,6 +76,7 @@ services:
     volumes: &volumes
       - ./volumes/app/log:/home/app/src/log
       - ./volumes/app/tmp:/home/app/src/tmp
+      - ~/volumes/nginx/html:/usr/share/nginx/html
     depends_on:
       - nginx
       - nginx-gen
