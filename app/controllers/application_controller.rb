@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
   include SessionsHelper
+  include Pundit
 
   before_action :set_locale
 
