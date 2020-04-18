@@ -64,7 +64,8 @@ CREATE TABLE public.users (
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
     confirmation_token character varying,
-    confirmed_at timestamp without time zone
+    confirmed_at timestamp without time zone,
+    admin boolean DEFAULT false NOT NULL
 );
 
 -- Name: votes; Type: TABLE
@@ -130,5 +131,6 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20190530080904'),
 ('20190906150411'),
 ('20190906162215'),
-('20191010192632');
+('20191010192632'),
+('20200418120630');
 
