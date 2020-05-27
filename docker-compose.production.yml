@@ -6,6 +6,9 @@ services:
       - POSTGRES_USER=polikompas
       - POSTGRES_PASSWORD=polikompas
       - POSTGRES_DB=polikompas_production
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
   nginx:
     build:
       context: .
@@ -82,6 +85,9 @@ services:
       - nginx-gen
       - nginx-letsencrypt
       - db
+
+volumes:
+  db-data:
 
 networks:
   default:
