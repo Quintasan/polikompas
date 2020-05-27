@@ -5,10 +5,10 @@ if [[ -a tmp/pids/server.pid ]]; then
 fi
 
 if [[ $RAILS_ENV == "production" ]]; then
-  rm -rf /usr/share/nginx/html/public
-  mkdir -p /usr/share/nginx/html/public
+  rm -rf /usr/share/nginx/html
+  mkdir -p /usr/share/nginx/html
   rake webpacker:compile
-  cp -rf public/* /usr/share/nginx/html/public
+  cp -rf public /usr/share/nginx/html/
 fi
 
 bin/rails server -b 0.0.0.0 -p $PORT
