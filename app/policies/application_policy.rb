@@ -7,15 +7,15 @@ class ApplicationPolicy
   end
 
   def index?
-    false
+    is_admin?(user) || false
   end
 
   def show?
-    false
+    is_admin?(user) || false
   end
 
   def create?
-    false
+    is_admin?(user) || false
   end
 
   def new?
@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    false
+    is_admin?(user) || false
   end
 
   def edit?
@@ -31,7 +31,13 @@ class ApplicationPolicy
   end
 
   def destroy?
-    false
+    is_admin?(user) || false
+  end
+
+  private
+
+  def is_admin?(user)
+    user.admin?
   end
 
   class Scope
