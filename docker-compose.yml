@@ -16,7 +16,7 @@ services:
       - node_modules:/node_modules
   db:
     env_file: .env
-    image: postgres:11.2-alpine
+    image: postgres:12-alpine
 
   app: &app
     build:
