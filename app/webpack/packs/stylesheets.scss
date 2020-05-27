@@ -1,3 +1,11 @@
+$primary: rgb(76, 175, 80);
+$primary-light: #80e27e;
+$primary-dark: #087f23;
+
+:root {
+  --mdc-theme-primary: #{$primary};
+}
+
 @import "~@material/feature-targeting/functions";
 @import "~@material/line-ripple/mdc-line-ripple";
 @import "~@material/floating-label/mdc-floating-label";
@@ -14,7 +22,7 @@ $material-icons-font-path: '~material-icons/iconfont/';
 @import '~bootstrap/scss/bootstrap';
 
 body {
-  background-color: #004400;
+  background-color: #F9F9F9;
 }
 
 .container {

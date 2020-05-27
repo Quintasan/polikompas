@@ -1,8 +1,8 @@
-.mdc-card.mdc-elevation--z12
+.mdc-card.mdc-elevation--z6
   .card-content
     .row
       .col
-        %h1.mdc-typography--headline1=t(".header")
+        %h2.mdc-typography--headline2=t(".header")
         %ul.mdc-list.mdc-list--two-line.mcd-list--avatar-list
           - law_proposals.each do |lp|
             %li.mdc-list-item{data: { controller: "votable", target: "votable.item", "votable-type": lp.class.to_s, "votable-id": lp.id, "votable-score": lp.score } }
