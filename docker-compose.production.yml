@@ -49,7 +49,7 @@ services:
       - ~/volumes/nginx/conf.d:/etc/nginx/conf.d
       - ~/volumes/nginx/vhost.d:/etc/nginx/vhost.d
       - ~/volumes/nginx/certs:/etc/nginx/certs:rw
-      - nginx-html:/usr/share/nginx/html
+      - nginx-html:/usr/share/nginx/html/public
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
       NGINX_DOCKER_GEN_CONTAINER: nginx-gen
@@ -81,7 +81,7 @@ services:
     volumes: &volumes
       - ./volumes/app/log:/home/app/src/log
       - ./volumes/app/tmp:/home/app/src/tmp
-      - nginx-html:/usr/share/nginx/html
+      - nginx-html:/home/app/public
     depends_on:
       - nginx
       - nginx-gen
