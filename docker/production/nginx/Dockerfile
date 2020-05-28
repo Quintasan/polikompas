@@ -1,2 +1,2 @@
 FROM nginx:alpine
-COPY public /usr/share/nginx/html/
+RUN mkdir -p /usr/share/nginx/html/public
