@@ -1,57 +1,49 @@
-$primary: rgb(76, 175, 80);
-$primary-light: #80e27e;
-$primary-dark: #087f23;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
 
-:root {
-  --mdc-theme-primary: #{$primary};
+.btn-primary {
+  @apply bg-primary text-white font-semibold px-4 py-2
 }
 
-@import "~@material/feature-targeting/functions";
-@import "~@material/line-ripple/mdc-line-ripple";
-@import "~@material/floating-label/mdc-floating-label";
-@import "~@material/typography/mdc-typography";
-@import "~@material/card/mdc-card";
-@import "~@material/button/mdc-button";
-@import "~@material/elevation/mdc-elevation";
-@import "~@material/textfield/mdc-text-field";
-@import "~@material/layout-grid/mdc-layout-grid";
-@import "@material/top-app-bar/mdc-top-app-bar";
-@import "~@material/list/mdc-list";
-$material-icons-font-path: '~material-icons/iconfont/';
-@import '~material-icons/iconfont/material-icons.scss';
-@import '~bootstrap/scss/bootstrap';
-
-body {
-  background-color: #F9F9F9;
+.btn-primary:hover {
+  @apply bg-primaryDark
 }
 
-.container {
-  padding-top: 5rem;
+.menu-link {
+  @apply ml-4 px-3 py-2 rounded-md text-sm font-medium text-white 
 }
 
-.mdc-top-app-bar__section > a {
-  color: white;
+.menu-link:hover {
+  @apply text-white bg-gray-700
 }
 
-.inputs {
-  display: flex;
-  flex-direction: column;
+.menu-link:focus {
+  @apply outline-none text-white bg-gray-700
 }
 
-.card-content {
-  padding: 1rem;
+@screen sm {
+  .btn-primary {
+    @apply px-5 py-3
+  }
 }
 
-.voting-buttons {
-  display: flex;
-  flex-direction: column;
+@screen md {
+  .btn-primary {
+    @apply px-6 py-4 text-xl
+  }
 }
 
-table {
-  border: 1px solid rgba(0, 0, 0, 0.1);
+@screen lg {
 }
 
-.material-icons.md-18 { font-size: 18px; }
-.material-icons.md-24 { font-size: 24px; }
-.material-icons.md-36 { font-size: 36px; }
-.material-icons.md-48 { font-size: 48px; }
+@screen xl {
+}
+
+@import "tailwindcss/utilities";
+
+.call-to-action {
+  background: rgba(0, 0, 0, 0.75) url("../images/front1.jpg");
+  background-blend-mode: darken;
+  background-position: center;
+  background-size: cover;
+}

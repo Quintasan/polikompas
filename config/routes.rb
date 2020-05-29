@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root to: "law_proposals#index"
+  root to: 'high_voltage/pages#show', id: 'home'
   post "/vote", to: "votes#vote"
   resources :law_proposals
 

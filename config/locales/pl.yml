@@ -54,13 +54,6 @@ pl:
       header: Propozycje ustaw
     show:
       source: Źródło
-  layouts:
-    application:
-      login: Zaloguj się
-      logout: Wyloguj się
-      manage_law_proposals: Zarządzanie projektami ustaw
-      privacy_policy: Polityka prywatności
-      signup: Zarejestruj się
   pages:
     privacy:
       header: Polityka prywatności
@@ -86,3 +79,10 @@ pl:
     new:
       header: Zaloguj się
       login: Zaloguj
+  shared:
+    navigation:
+      login: Zaloguj się
+      logout: Wyloguj się
+      manage_law_proposals: Zarządzanie projektami ustaw
+      privacy_policy: Polityka prywatności
+      signup: Zarejestruj się

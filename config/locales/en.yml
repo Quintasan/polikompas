@@ -86,3 +86,7 @@ en:
     new:
       header: Header
       login: Login
+  shared:
+    navigation:
+      manage_law_proposals: Manage law proposals
+      privacy_policy: Privacy policy
