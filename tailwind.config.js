@@ -5,12 +5,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#8bc34a',
-        primaryDark: '#689F38'
+        primary: 'var(--color-primary)',
+        primaryDark: 'var(--color-primary-dark)'
       },
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
+      screens: {
+        'hidpi': {
+          'raw': '(min-resolution: 2dppx)'
+        }
+      }
     },
   },
   variants: {},

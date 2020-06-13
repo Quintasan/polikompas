@@ -1,4 +1,102 @@
+:root {
+  --color-primary :#8bc34a;
+  --color-primary-dark: #689F38;
+}
+
 @import "tailwindcss/base";
+
+h1 {
+  @apply text-4xl;
+}
+
+h2 {
+  @apply text-3xl;
+}
+
+h3 {
+  @apply text-2xl;
+}
+
+h4 {
+  @apply text-xl;
+}
+
+h5 {
+  @apply text-lg;
+}
+
+ul {
+  @apply list-disc list-inside;
+}
+
+ul > li {
+  @apply pl-4;
+}
+
+ol {
+  @apply list-decimal list-inside;
+}
+
+ol > li {
+  @apply pl-4;
+}
+
+@screen sm {
+}
+
+@screen md {
+}
+
+@screen lg {
+  h1 {
+    @apply text-5xl;
+  }
+
+  h2 {
+    @apply text-4xl;
+  }
+
+  h3 {
+    @apply text-3xl;
+  }
+
+  h4 {
+    @apply text-2xl;
+  }
+
+  h5 {
+    @apply text-xl;
+  }
+}
+
+@screen xl {
+  h1 {
+    @apply text-6xl;
+  }
+
+  h2 {
+    @apply text-5xl;
+  }
+
+  h3 {
+    @apply text-4xl;
+  }
+
+  h4 {
+    @apply text-3xl;
+  }
+
+  h5 {
+    @apply text-lg;
+  }
+}
+
+@screen hidpi {
+  h1 {
+    @apply text-6xl;
+  }
+}
+
 @import "tailwindcss/components";
 
 .btn-primary {
@@ -46,4 +144,67 @@
   background-blend-mode: darken;
   background-position: center;
   background-size: cover;
+}
+
+.tab-content {
+  max-height: 0;
+  -webkit-transition: max-height .35s;
+  -o-transition: max-height .35s;
+  transition: max-height .35s;
+}
+
+.tab input:checked ~ .tab-content {
+  max-height: 100%;
+}
+
+.tab input:checked + label{
+  font-size: 1.25rem;
+  padding: 1.25rem;
+  border-left-width: 2px;
+  border-color: var(--color-primary);
+  background-color: #f8fafc;
+  color:  var(--color-primary);
+}
+/* Icon */
+.tab label::after {
+  float:right;
+  right: 0;
+  top: 0;
+  display: block;
+  width: 1.5em;
+  height: 1.5em;
+  line-height: 1.5;
+  font-size: 1.25rem;
+  text-align: center;
+  -webkit-transition: all .35s;
+  -o-transition: all .35s;
+  transition: all .35s;
+}
+
+.tab input[type=checkbox] + label::after {
+  content: "+";
+  font-weight:bold;
+  border-width: 1px;
+  border-radius: 9999px;
+  border-color: var(--color-primary);
+}
+
+.tab input[type=radio] + label::after {
+  content: "\25BE";
+  font-weight:bold;
+  border-width: 1px;
+  border-radius: 9999px;
+  border-color: var(--color-primary);
+}
+
+.tab input[type=checkbox]:checked + label::after {
+  transform: rotate(315deg);
+  background-color: var(--color-primary);
+  color: #f8fafc;
+}
+
+.tab input[type=radio]:checked + label::after {
+  transform: rotateX(180deg);
+  background-color: var(--color-primary);
+  color: #f8fafc;
 }
