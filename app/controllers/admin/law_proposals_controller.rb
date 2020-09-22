@@ -41,11 +41,11 @@ module Admin
       end
     end
 
-    def delete
+    def destroy
       authorize law_proposal
 
       law_proposal.destroy
-      redirect_to :index, status: :ok
+      redirect_to admin_law_proposals_path, status: :ok
     end
 
     private

@@ -1,28 +1,39 @@
-.mdc-card.mdc-elevation--z12
-  .card-content
-    .row
-      .col
-        %h1.mdc-typography--headline1=t(".header")
-    .row.pt-4
-      .col
-        = link_to t(".create"), new_admin_law_proposal_url, class: "mdc-button mdc-button--raised"
-    .row.pt-5
-      .col
-        %table#law_proposals.table.table-hover
-          %thead.thead-light
-            %tr
-              %td=LawProposal.human_attribute_name(:id)
-              %td=LawProposal.human_attribute_name(:name)
-              %td=LawProposal.human_attribute_name(:description)
-              %td=LawProposal.human_attribute_name(:url)
-              %td(colspan=3)=t(".actions")
-          %tbody
-            - law_proposals.each do |law_proposal|
-              %tr
-                %td= law_proposal.id
-                %td= law_proposal.name
-                %td= law_proposal.description
-                %td= law_proposal.url
-                %td= link_to t(".show"), admin_law_proposal_url(law_proposal)
-                %td= link_to t(".edit"), edit_admin_law_proposal_url(law_proposal)
-                %td= link_to t(".delete"), admin_law_proposal_url(law_proposal)
+- th_class = "p-3 font-bold uppercase bg-primary text-white border border-gray-300 hidden lg:table-cell"
+- first_td_class = "w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static"
+- subsequent_td_class = "w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static"
+- span_class = "lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"
+
+.container.mx-auto.flex.flex-col.flex-wrap
+  %h2.lg:my-8= t(".header")
+
+  .buttons.lg:mb-4
+    = link_to t(".create"), new_admin_law_proposal_url, class: "btn-primary rounded flex-grow-0 w-20"
+
+  %table.border-collapse.shadow-lg.w-full
+    %thead
+      %tr
+        %th{class: th_class} ID
+        %th{class: th_class}= LawProposal.human_attribute_name(:name)
+        %th{class: th_class}= LawProposal.human_attribute_name(:description)
+        %th{class: th_class}= LawProposal.human_attribute_name(:url)
+        %th{class: th_class}= t(".actions")
+    %tbody
+      - law_proposals.each do |law_proposal|
+        %tr(class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0")
+          %td{class: first_td_class}
+            %span{class: span_class} ID
+            = law_proposal.id
+          %td{class: subsequent_td_class}
+            %span{class: span_class}= LawProposal.human_attribute_name(:name)
+            = law_proposal.name
+          %td{class: subsequent_td_class}
+            %span{class: span_class}= LawProposal.human_attribute_name(:description)
+            = law_proposal.description
+          %td{class: subsequent_td_class}
+            %span{class: span_class}= LawProposal.human_attribute_name(:url)
+            = link_to law_proposal.url, law_proposal.url
+          %td{class: subsequent_td_class}
+            %span{class: span_class}= t(".actions")
+            = link_to t(".show"), admin_law_proposal_url(law_proposal)
+            = link_to t(".edit"), edit_admin_law_proposal_url(law_proposal)
+            = link_to t(".delete"), admin_law_proposal_url(law_proposal), method: :delete, data: { confirm: "Czy na pewno chcesz usunąć #{law_proposal.name}?" }

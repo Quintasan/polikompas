@@ -5,6 +5,14 @@
 
 @import "tailwindcss/base";
 
+table {
+  margin: 1rem;
+}
+
+a {
+  text-decoration: underline;
+}
+
 h1 {
   @apply text-4xl;
 }
@@ -100,7 +108,7 @@ ol > li {
 @import "tailwindcss/components";
 
 .btn-primary {
-  @apply bg-primary text-white font-semibold px-4 py-2
+  @apply bg-primary text-white font-semibold px-4 py-2 no-underline
 }
 
 .btn-primary:hover {
@@ -108,7 +116,7 @@ ol > li {
 }
 
 .menu-link {
-  @apply ml-4 px-3 py-2 rounded-md text-sm font-medium text-white 
+  @apply ml-4 px-3 py-2 rounded-md text-sm font-medium text-white no-underline
 }
 
 .menu-link:hover {

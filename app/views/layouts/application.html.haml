@@ -10,6 +10,5 @@
     = javascript_packs_with_chunks_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_packs_with_chunks_tag 'stylesheets', media: 'all', 'data-turbolinks-track': 'reload'
   %body.h-full
-    .flex.flex-col.h-full
-      = render "shared/navigation"
-      = yield
+    = render "shared/navigation"
+    = yield
