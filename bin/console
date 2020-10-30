@@ -13,5 +13,5 @@ def system!(*args)
 end
 
 chdir APP_ROOT do
-  system! 'docker-compose stop rails webpacker db'
+  system! 'docker-compose run --rm rails bin/rails c'
 end
