@@ -5,15 +5,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: 'var(--color-primary)',
-        primaryDark: 'var(--color-primary-dark)'
+        primary: 'rgb(var(--color-primary))',
+        primaryDark: 'rgb(var(--color-primary-dark))'
       },
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
       screens: {
         'hidpi': {
-          'raw': '(min-resolution: 2dppx)'
+          'raw': '(min-resolution: 2dppx) and (min-width: 1080px)'
         }
       }
     },

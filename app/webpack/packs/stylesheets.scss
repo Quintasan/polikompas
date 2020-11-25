@@ -1,9 +1,13 @@
 :root {
-  --color-primary :#8bc34a;
-  --color-primary-dark: #689F38;
+  --color-primary: 139, 195, 74;
+  --color-primary-dark: 104, 159, 56;
 }
 
 @import "tailwindcss/base";
+
+html {
+  scroll-behavior: smooth;
+}
 
 table {
   margin: 1rem;
@@ -154,6 +158,11 @@ ol > li {
   background-size: cover;
 }
 
+.full-height {
+  background: rgba(var(--color-primary), 0.75);
+  background-blend-mode: darken;
+}
+
 .tab-content {
   max-height: 0;
   -webkit-transition: max-height .35s;
@@ -169,9 +178,9 @@ ol > li {
   font-size: 1.25rem;
   padding: 1.25rem;
   border-left-width: 2px;
-  border-color: var(--color-primary);
+  border-color: RGB(var(--color-primary));
   background-color: #f8fafc;
-  color:  var(--color-primary);
+  color: RGB(var(--color-primary));
 }
 /* Icon */
 .tab label::after {
@@ -194,7 +203,7 @@ ol > li {
   font-weight:bold;
   border-width: 1px;
   border-radius: 9999px;
-  border-color: var(--color-primary);
+  border-color: RGB(var(--color-primary));
 }
 
 .tab input[type=radio] + label::after {
@@ -202,17 +211,26 @@ ol > li {
   font-weight:bold;
   border-width: 1px;
   border-radius: 9999px;
-  border-color: var(--color-primary);
+  border-color: RGB(var(--color-primary));
 }
 
 .tab input[type=checkbox]:checked + label::after {
   transform: rotate(315deg);
-  background-color: var(--color-primary);
+  background-color: RGB(var(--color-primary));
   color: #f8fafc;
 }
 
 .tab input[type=radio]:checked + label::after {
   transform: rotateX(180deg);
-  background-color: var(--color-primary);
+  background-color: RGB(var(--color-primary));
   color: #f8fafc;
+}
+
+.modal {
+  transition: opacity 0.25s ease;
+}
+
+body.modal-active {
+  overflow-x: hidden;
+  overflow-y: visible !important;
 }
