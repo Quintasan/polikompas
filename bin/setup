@@ -16,6 +16,6 @@ chdir APP_ROOT do
   system! 'docker-compose build'
   system! 'docker-compose run --rm rails bin/bundle install --jobs="$(nproc)"'
   system! 'docker-compose run --rm rails bin/yarn install'
-  system! 'docker-compose run --rm rails bin/rails db:drop db:create db:migrate'
+  system! 'docker-compose run --rm rails bin/rails db:drop db:create db:migrate db:seed'
   print "Now you can bring the website up with `docker-compose up rails webpacker`"
 end
