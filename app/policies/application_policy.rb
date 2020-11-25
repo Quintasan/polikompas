@@ -37,7 +37,7 @@ class ApplicationPolicy
   private
 
   def is_admin?(user)
-    user.admin?
+    user&.admin?
   end
 
   class Scope

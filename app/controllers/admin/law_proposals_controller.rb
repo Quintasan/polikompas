@@ -6,6 +6,7 @@ module Admin
     expose(:law_proposal)
 
     def index
+      authorize LawProposal
       policy_scope(LawProposal)
     end
 
