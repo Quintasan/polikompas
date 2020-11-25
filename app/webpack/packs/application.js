@@ -1,18 +1,58 @@
 /* eslint no-console:0 */
 import Rails from '@rails/ujs'
 import "controllers"
-import {MDCTextField} from "@material/textfield/index";
-import {MDCList} from '@material/list/index';
-import {MDCRipple} from '@material/ripple/index';
-import {MDCTopAppBar} from '@material/top-app-bar/index';
+require("alpinejs")
+
+// https://rossta.net/blog/importing-images-with-webpacker.html
+require.context('../images', true)
+require.context('../videos', true)
 
 document.addEventListener("DOMContentLoaded", function(event) {
   Rails.start();
-  const topAppBarElement = document.querySelector('.mdc-top-app-bar');
-  const topAppBar = new MDCTopAppBar(topAppBarElement);
-  const buttons = [].map.call(document.querySelectorAll(".mdc-text-field"), (el) => { return new MDCTextField(el); });
-  const lists = [].map.call(document.querySelectorAll(".mdc-list"), (el) => { return new MDCList(el); });
-  lists.map((list) => {
-    list.listElements.map((listItemEl) => new MDCRipple(listItemEl));
-  });
+  var openmodal = document.querySelectorAll('.modal-open')
+  for (var i = 0; i < openmodal.length; i++) {
+    openmodal[i].addEventListener('click', function(event){
+    event.preventDefault()
+    toggleModal()
+    })
+  }
+
+  const overlay = document.querySelector('.modal-overlay')
+  overlay.addEventListener('click', toggleModal)
+
+  var closemodal = document.querySelectorAll('.modal-close')
+  for (var i = 0; i < closemodal.length; i++) {
+    closemodal[i].addEventListener('click', toggleModal)
+  }
+
+  document.onkeydown = function(evt) {
+    evt = evt || window.event
+    var isEscape = false
+    if ("key" in evt) {
+    isEscape = (evt.key === "Escape" || evt.key === "Esc")
+    } else {
+    isEscape = (evt.keyCode === 27)
+    }
+    if (isEscape && document.body.classList.contains('modal-active')) {
+    toggleModal()
+    }
+  };
+
+  function toggleVideo() {
+    const video = document.querySelector('#introduction-video')
+    if(video.paused) {
+      video.play()
+    } else {
+      video.pause()
+    }
+  }
+
+  function toggleModal () {
+    const body = document.querySelector('body')
+    const modal = document.querySelector('.modal')
+    modal.classList.toggle('opacity-0')
+    modal.classList.toggle('pointer-events-none')
+    body.classList.toggle('modal-active')
+    toggleVideo()
+  }
 });

@@ -13,5 +13,5 @@ def system!(*args)
 end
 
 chdir APP_ROOT do
-  system! 'docker-compose up rails webpacker'
+  system! 'docker-compose up rails webpacker db'
 end

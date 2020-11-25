@@ -1,57 +1,236 @@
-$primary: rgb(76, 175, 80);
-$primary-light: #80e27e;
-$primary-dark: #087f23;
-
 :root {
-  --mdc-theme-primary: #{$primary};
+  --color-primary: 139, 195, 74;
+  --color-primary-dark: 104, 159, 56;
 }
 
-@import "~@material/feature-targeting/functions";
-@import "~@material/line-ripple/mdc-line-ripple";
-@import "~@material/floating-label/mdc-floating-label";
-@import "~@material/typography/mdc-typography";
-@import "~@material/card/mdc-card";
-@import "~@material/button/mdc-button";
-@import "~@material/elevation/mdc-elevation";
-@import "~@material/textfield/mdc-text-field";
-@import "~@material/layout-grid/mdc-layout-grid";
-@import "@material/top-app-bar/mdc-top-app-bar";
-@import "~@material/list/mdc-list";
-$material-icons-font-path: '~material-icons/iconfont/';
-@import '~material-icons/iconfont/material-icons.scss';
-@import '~bootstrap/scss/bootstrap';
+@import "tailwindcss/base";
 
-body {
-  background-color: #F9F9F9;
-}
-
-.container {
-  padding-top: 5rem;
-}
-
-.mdc-top-app-bar__section > a {
-  color: white;
-}
-
-.inputs {
-  display: flex;
-  flex-direction: column;
-}
-
-.card-content {
-  padding: 1rem;
-}
-
-.voting-buttons {
-  display: flex;
-  flex-direction: column;
+html {
+  scroll-behavior: smooth;
 }
 
 table {
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 1rem;
 }
 
-.material-icons.md-18 { font-size: 18px; }
-.material-icons.md-24 { font-size: 24px; }
-.material-icons.md-36 { font-size: 36px; }
-.material-icons.md-48 { font-size: 48px; }
+a {
+  text-decoration: underline;
+}
+
+h1 {
+  @apply text-4xl;
+}
+
+h2 {
+  @apply text-3xl;
+}
+
+h3 {
+  @apply text-2xl;
+}
+
+h4 {
+  @apply text-xl;
+}
+
+h5 {
+  @apply text-lg;
+}
+
+ul {
+  @apply list-disc list-inside;
+}
+
+ul > li {
+  @apply pl-4;
+}
+
+ol {
+  @apply list-decimal list-inside;
+}
+
+ol > li {
+  @apply pl-4;
+}
+
+@screen sm {
+}
+
+@screen md {
+}
+
+@screen lg {
+  h1 {
+    @apply text-5xl;
+  }
+
+  h2 {
+    @apply text-4xl;
+  }
+
+  h3 {
+    @apply text-3xl;
+  }
+
+  h4 {
+    @apply text-2xl;
+  }
+
+  h5 {
+    @apply text-xl;
+  }
+}
+
+@screen xl {
+  h1 {
+    @apply text-6xl;
+  }
+
+  h2 {
+    @apply text-5xl;
+  }
+
+  h3 {
+    @apply text-4xl;
+  }
+
+  h4 {
+    @apply text-3xl;
+  }
+
+  h5 {
+    @apply text-lg;
+  }
+}
+
+@screen hidpi {
+  h1 {
+    @apply text-6xl;
+  }
+}
+
+@import "tailwindcss/components";
+
+.btn-primary {
+  @apply bg-primary text-white font-semibold px-4 py-2 no-underline
+}
+
+.btn-primary:hover {
+  @apply bg-primaryDark
+}
+
+.menu-link {
+  @apply ml-4 px-3 py-2 rounded-md text-sm font-medium text-white no-underline
+}
+
+.menu-link:hover {
+  @apply text-white bg-gray-700
+}
+
+.menu-link:focus {
+  @apply outline-none text-white bg-gray-700
+}
+
+@screen sm {
+  .btn-primary {
+    @apply px-5 py-3
+  }
+}
+
+@screen md {
+  .btn-primary {
+    @apply px-6 py-4 text-xl
+  }
+}
+
+@screen lg {
+}
+
+@screen xl {
+}
+
+@import "tailwindcss/utilities";
+
+.call-to-action {
+  background: rgba(0, 0, 0, 0.75) url("../images/front1.jpg");
+  background-blend-mode: darken;
+  background-position: center;
+  background-size: cover;
+}
+
+.full-height {
+  background: rgba(var(--color-primary), 0.75);
+  background-blend-mode: darken;
+}
+
+.tab-content {
+  max-height: 0;
+  -webkit-transition: max-height .35s;
+  -o-transition: max-height .35s;
+  transition: max-height .35s;
+}
+
+.tab input:checked ~ .tab-content {
+  max-height: 100%;
+}
+
+.tab input:checked + label{
+  font-size: 1.25rem;
+  padding: 1.25rem;
+  border-left-width: 2px;
+  border-color: RGB(var(--color-primary));
+  background-color: #f8fafc;
+  color: RGB(var(--color-primary));
+}
+/* Icon */
+.tab label::after {
+  float:right;
+  right: 0;
+  top: 0;
+  display: block;
+  width: 1.5em;
+  height: 1.5em;
+  line-height: 1.5;
+  font-size: 1.25rem;
+  text-align: center;
+  -webkit-transition: all .35s;
+  -o-transition: all .35s;
+  transition: all .35s;
+}
+
+.tab input[type=checkbox] + label::after {
+  content: "+";
+  font-weight:bold;
+  border-width: 1px;
+  border-radius: 9999px;
+  border-color: RGB(var(--color-primary));
+}
+
+.tab input[type=radio] + label::after {
+  content: "\25BE";
+  font-weight:bold;
+  border-width: 1px;
+  border-radius: 9999px;
+  border-color: RGB(var(--color-primary));
+}
+
+.tab input[type=checkbox]:checked + label::after {
+  transform: rotate(315deg);
+  background-color: RGB(var(--color-primary));
+  color: #f8fafc;
+}
+
+.tab input[type=radio]:checked + label::after {
+  transform: rotateX(180deg);
+  background-color: RGB(var(--color-primary));
+  color: #f8fafc;
+}
+
+.modal {
+  transition: opacity 0.25s ease;
+}
+
+body.modal-active {
+  overflow-x: hidden;
+  overflow-y: visible !important;
+}

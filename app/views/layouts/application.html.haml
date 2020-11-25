@@ -1,30 +1,15 @@
 !!!
-%html
+%html.h-screen
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{name: "viewport", content: "width=device-width, initial-scale=1, shrink-to-fit=no"}
     %title Polikompas
-    %link{href: "https://fonts.googleapis.com/css?family=Roboto:300,400,500", rel: "stylesheet"}
+    %link{href: "https://rsms.me/inter/inter.css", rel: "stylesheet"}
     = csrf_meta_tags
     = csp_meta_tag
-    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-    = stylesheet_pack_tag 'stylesheets', media: 'all', 'data-turbolinks-track': 'reload'
-  %body.mdc-typography
-    %header.mdc-top-app-bar.mdc-top-app-bar--fixed
-      .mdc-top-app-bar__row
-        %section.mdc-top-app-bar__section.mdc-top-app-bar__section--align-start
-          = link_to t("polikompas"), root_url, class: "mdc-top-app-bar__title"
-          - if current_user&.admin?
-            = link_to t(".manage_law_proposals"), admin_law_proposals_url, class: "mdc-top-app-bar__title"
-          = link_to t(".privacy_policy"), page_url('privacy'), class: "mdc-top-app-bar__title"
-        %section.mdc-top-app-bar__section.mdc-top-app-bar__section--align-end
-          - if current_user
-            = link_to t(".logout"), logout_url, method: :delete, class: "mdc-top-app-bar__title"
-          - else
-            = link_to t(".login"), login_url, class: "mdc-top-app-bar__title"
-            = link_to t(".signup"), signup_url, class: "mdc-top-app-bar__title"
-    .container
-      .pt-5
-        - flash.each do |key, value|
-          %div{class: flash_class(key)}= value
-        = yield
+    = javascript_packs_with_chunks_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_packs_with_chunks_tag 'stylesheets', media: 'all', 'data-turbolinks-track': 'reload'
+  %body.h-full
+    .flex.flex-col.h-full
+      = render "shared/navigation"
+      = yield

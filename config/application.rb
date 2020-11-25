@@ -24,10 +24,13 @@ module Polikompas
     I18n.default_locale = :pl
     config.load_defaults 5.2
     config.generators do |g|
+      g.assets false
       g.test_framework :rspec, fixture: true
       g.view_specs false
+      g.helper false
       g.helper_specs false
     end
+
     config.active_record.schema_format = :sql
   end
 end

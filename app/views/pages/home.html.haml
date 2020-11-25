@@ -1,0 +1,27 @@
+.flex.flex-col.h-full
+  .call-to-action.flex-grow.flex.flex-col.justify-center.items-center.h-full.flex-shrink-0
+    %h1.text-white.font-semibold Konsultacje Obywatelskie
+    %h2.text-white.font-thin.sm:font-normal.md:font-thin
+      Niech politycy znają
+      %span.text-primary Twoje zdanie
+    .inline-flex.mt-6
+      %a.inline-block.btn-primary.rounded{href: "#"} Zaloguj się
+      %span.text-white.mx-4.self-center lub
+      %a.inline-block.btn-primary.rounded{href: "#"} Zarejestruj się
+    .inline-flex.mt-6
+      %h1.text-white.font-semibold Nie wiesz o chodzi?
+    .inline-flex.mt-6
+      .modal.opacity-0.pointer-events-none.fixed.w-full.h-full.top-0.left-0.flex.items-center.justify-center
+        .modal-overlay.absolute.w-full.h-full.bg-gray-900.opacity-50
+        .modal-container.bg-white.max-w-full.mx-auto.rounded.shadow-lg.z-50.overflow-y-auto{:class => "w-6/12"}
+          .modal-content.py-4.text-left.px-6
+            .flex.justify-between.items-center.pb-3
+              %p.font-bold Czym są Konsultacje Obywatelskie?
+              .modal-close.cursor-pointer.z-50
+                %svg.fill-current.text-black{:height => "18", :viewbox => "0 0 18 18", :width => "18", :xmlns => "http://www.w3.org/2000/svg"}
+                  %path{:d => "M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"}
+            %video#introduction-video{poster: asset_pack_path("media/images/intro.png")}(controls width="100%")
+              %source{src: asset_pack_path("media/videos/intro.webm")}(type="video/webm")
+            .flex.justify-end.pt-2
+              %button.modal-close.btn-primary.rounded Zamknij
+      %button.video-modal.modal-open.btn-primary.rounded Obejrzyj filmik
