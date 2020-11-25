@@ -23,7 +23,7 @@ services:
     volumes:
       - ~/volumes/nginx/conf.d:/etc/nginx/conf.d
       - ~/volumes/nginx/vhost.d:/etc/nginx/vhost.d
-      - nginx-html:/usr/share/nginx/html/public
+      - nginx-html:/usr/share/nginx/html
       - ~/volumes/nginx/certs:/etc/nginx/certs:ro
 
   nginx-gen:
@@ -34,7 +34,7 @@ services:
     volumes:
       - ~/volumes/nginx/conf.d:/etc/nginx/conf.d
       - ~/volumes/nginx/vhost.d:/etc/nginx/vhost.d
-      - nginx-html:/usr/share/nginx/html/public
+      - nginx-html:/usr/share/nginx/html
       - ~/volumes/nginx/certs:/etc/nginx/certs:ro
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - ./docker/production/nginx/nginx.tmpl:/etc/docker-gen/templates/nginx.tmpl:ro
@@ -42,14 +42,14 @@ services:
       - nginx
 
   nginx-letsencrypt:
-    image: jrcs/letsencrypt-nginx-proxy-companion
+    image: jrcs/letsencrypt-nginx-proxy-companion:latest
     container_name: nginx-letsencrypt
     restart: always
     volumes:
       - ~/volumes/nginx/conf.d:/etc/nginx/conf.d
       - ~/volumes/nginx/vhost.d:/etc/nginx/vhost.d
       - ~/volumes/nginx/certs:/etc/nginx/certs:rw
-      - nginx-html:/usr/share/nginx/html/public
+      - nginx-html:/usr/share/nginx/html
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
       NGINX_DOCKER_GEN_CONTAINER: nginx-gen
@@ -81,7 +81,7 @@ services:
     volumes: &volumes
       - ./volumes/app/log:/home/app/src/log
       - ./volumes/app/tmp:/home/app/src/tmp
-      - nginx-html:/home/app/src/public
+      - nginx-html:/tmp/assets
     depends_on:
       - nginx
       - nginx-gen

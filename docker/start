@@ -3,6 +3,12 @@
 if [[ -a tmp/pids/server.pid ]]; then
   rm -r tmp/pids/server.pid
 fi
+
 bin/rails webpacker:compile
+if [[ -d /tmp/assets/public ]]; then
+  rm -rf /tmp/assets/public/packs
+  cp -rf public/packs /tmp/assets/public/packs
+fi
+
 bin/rails db:migrate
 bin/rails server -b 0.0.0.0 -p $PORT

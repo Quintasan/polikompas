@@ -20,13 +20,11 @@ RUN apk add --update --no-cache \
       bash
 RUN bundle config build.nokogiri --use-system-libraries
 
-RUN adduser -D app
-USER app
-RUN mkdir /home/app/src
-WORKDIR /home/app/src
-COPY --chown=app:app Gemfile* package.json yarn.lock /home/app/src/
+RUN mkdir -p /var/src/app
+WORKDIR /var/src/app
+COPY Gemfile* package.json yarn.lock /var/src/app/
 
 RUN bundle install --jobs=$(nproc) --without=development test
 RUN yarn install
-COPY --chown=app:app . /home/app/src
+COPY . /var/src/app
 CMD docker/start
