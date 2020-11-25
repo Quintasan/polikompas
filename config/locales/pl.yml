@@ -52,6 +52,7 @@ pl:
   law_proposals:
     index:
       header: Propozycje ustaw
+      actions: Twój głos
     show:
       source: Źródło
   pages:

@@ -29,33 +29,32 @@ export default class extends Controller {
     }
   }
 
+  post(action) {
+    fetch("/vote", {
+      method: "POST",
+      body: JSON.stringify(this.payload(action)),
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': Rails.csrfToken()
+      }
+    }).then(response => response.json())
+      .then(response => this.score = response["score"])
+      .catch(error => console.error(`Error: ${error}`))
+  }
+
   updateScore() {
-    this.itemTarget.querySelector(".mdc-list-item__graphic").innerText = this.score
+    this.itemTarget.querySelector(".score").innerText = this.score
   }
 
   upvote() {
-    fetch("/vote", {
-      method: "POST",
-      body: JSON.stringify(this.payload("upvote")),
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-Token': Rails.csrfToken()
-      }
-    }).then(response => response.json())
-      .then(response => this.score = response["score"])
-      .catch(error => console.error(`Error: ${error}`))
+    this.post("upvote")
   }
 
   downvote() {
-    fetch("/vote", {
-      method: "POST",
-      body: JSON.stringify(this.payload("downvote")),
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-Token': Rails.csrfToken()
-      }
-    }).then(response => response.json())
-      .then(response => this.score = response["score"])
-      .catch(error => console.error(`Error: ${error}`))
+    this.post("downvote")
+  }
+
+  removeVote() {
+    this.post("remove-vote")
   }
 }

@@ -1,16 +1,37 @@
-.mdc-card.mdc-elevation--z6
-  .card-content
-    .row
-      .col
-        %h2.mdc-typography--headline2=t(".header")
-        %ul.mdc-list.mdc-list--two-line.mcd-list--avatar-list
-          - law_proposals.each do |lp|
-            %li.mdc-list-item{data: { controller: "votable", target: "votable.item", "votable-type": lp.class.to_s, "votable-id": lp.id, "votable-score": lp.score } }
-              %span.mdc-list-item__graphic= lp.score
-              %span.mdc-list-item__text
-                %span.mdc-list-item__primary-text= link_to lp.name, lp
-                %span.mdc-list-item__secondary-text= lp.description
-              %span.mdc-list-item__meta.voting-buttons
-                %span.material-icons.md-48{data: { action: "click->votable#upvote"} } arrow_drop_up
-                %span.material-icons.md-48{data: { action: "click->votable#downvote"} } arrow_drop_down
-            %li.mdc-list-divider{role: "separator"}
+- tr_class = "bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0"
+- th_class = "p-3 font-bold uppercase bg-primary text-white border border-gray-300 hidden lg:table-cell"
+- first_td_class = "w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static"
+- subsequent_td_class = "w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static"
+- span_class = "lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase"
+
+.container.mx-auto.flex.flex-col.flex-wrap
+  %h2.lg:my-8= t(".header")
+
+  %table.border-collapse.shadow-lg.w-full
+    %thead
+      %tr
+        %th{class: th_class} Wynik
+        %th{class: th_class}= LawProposal.human_attribute_name(:name)
+        %th{class: th_class}= LawProposal.human_attribute_name(:description)
+        %th{class: th_class}= LawProposal.human_attribute_name(:url)
+        %th{class: th_class}= t(".actions")
+    %tbody
+      - law_proposals.each do |law_proposal|
+        %tr{class: tr_class, data: { controller: "votable", target: "votable.item", "votable-type": law_proposal.class.to_s, "votable-id": law_proposal.id, "votable-score": law_proposal.score } }
+          %td{class: first_td_class}
+            %span{class: span_class} Wynik
+            .score= law_proposal.score
+          %td{class: subsequent_td_class}
+            %span{class: span_class}= LawProposal.human_attribute_name(:name)
+            = law_proposal.name
+          %td{class: subsequent_td_class}
+            %span{class: span_class}= LawProposal.human_attribute_name(:description)
+            = law_proposal.description
+          %td{class: subsequent_td_class}
+            %span{class: span_class}= LawProposal.human_attribute_name(:url)
+            = link_to law_proposal.url, law_proposal.url
+          %td{class: subsequent_td_class}
+            %span{class: span_class}= t(".actions")
+            %span{data: { action: "click->votable#upvote"} } 👍
+            %span{data: { action: "click->votable#removeVote"} } ✋
+            %span{data: { action: "click->votable#downvote"} } 👎
