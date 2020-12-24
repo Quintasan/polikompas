@@ -84,6 +84,7 @@ pl:
     navigation:
       login: Zaloguj się
       logout: Wyloguj się
+      law_proposals: Projekty ustaw
       manage_law_proposals: Zarządzanie projektami ustaw
       privacy_policy: Polityka prywatności
       signup: Zarejestruj się
